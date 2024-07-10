@@ -13,22 +13,56 @@
   <main class="container">
     <section>
       <div class="formulario">
-        <form action="" id="form">
+        <form action="" id="form" method="post">
           <h1 class="title_register">Registro</h1>
 
-          <input type="text" placeholder="ID" class="input_id" value="2">
+          <input type="text" placeholder="ID" class="input_id" hidden>
 
-          <input type="text" placeholder="Nombre" class="input_nombre" value="Daniel">
+          <input type="text" placeholder="Nombre" class="input_nombre" >
 
-          <input type="text" placeholder="Apellido" class="input_apellido" value="Gómez">
+          <input type="text" placeholder="Apellido" class="input_apellido" >
 
-          <input type="text" placeholder="Documento" class="input_documento" value="1096065444">
+          <input type="text" placeholder="Documento" class="input_documento" >
 
           <button type="submit" id="enviar">REGISTAR</button>
 
         </form>
 
       </div>
+      <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Documento</th>
+                <th>Tipo de Documento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Juan</td>
+                <td>Pérez</td>
+                <td>12345678</td>
+                <td>DNI</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>María</td>
+                <td>Gómez</td>
+                <td>87654321</td>
+                <td>Pasaporte</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Carlos</td>
+                <td>Sánchez</td>
+                <td>11223344</td>
+                <td>Cédula</td>
+            </tr>
+        </tbody>
+    </table>
 
     </section>
   </main>

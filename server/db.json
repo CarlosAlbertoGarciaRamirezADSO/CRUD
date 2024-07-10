@@ -1,0 +1,91 @@
+{
+  "users": [
+    {
+      "id": "23",
+      "nombre": "kevin",
+      "apellido": "lon",
+      "documento": "32000"
+    },
+    {
+      "id": "10",
+      "nombre": "carlos",
+      "apellido": "garcia",
+      "documento": "11043543"
+    },
+    {
+      "id": "9187",
+      "nombre": "",
+      "apellido": "",
+      "documento": "",
+      "tipo_documento": "Tipo Documento"
+    },
+    {
+      "id": "4848",
+      "nombre": "",
+      "apellido": "",
+      "documento": "",
+      "tipo_documento": "Tipo Documento"
+    },
+    {
+      "id": "a8ed",
+      "nombre": "",
+      "apellido": "",
+      "documento": "",
+      "tipo_documento": "Tipo Documento"
+    },
+    {
+      "id": "eeb1",
+      "nombre": "",
+      "apellido": "",
+      "documento": "",
+      "tipo_documento": "Tipo Documento"
+    },
+    {
+      "id": "d07b",
+      "nombre": "",
+      "apellido": "",
+      "documento": "",
+      "tipo_documento": "Tipo Documento"
+    },
+    {
+      "id": "fc8a",
+      "nombre": "",
+      "apellido": "",
+      "documento": "",
+      "tipo_documento": "Cedula de Ciudadania"
+    },
+    {
+      "id": "2e28",
+      "nombre": "sa",
+      "apellido": "fds",
+      "documento": "3",
+      "tipo_documento": "Cedula de Ciudadania"
+    }
+  ],
+  "documentos": [
+    {
+      "id": 1,
+      "nombre": "Tipo Documento"
+    },
+    {
+      "id": 2,
+      "nombre": "Cedula de Ciudadania"
+    },
+    {
+      "id": 3,
+      "nombre": "Tarjeta de identidad"
+    },
+    {
+      "id": 4,
+      "nombre": "Pasaporte"
+    },
+    {
+      "id": 5,
+      "nombre": "Extrangeria"
+    },
+    {
+      "id": 6,
+      "nombre": "otro"
+    }
+  ]
+}
