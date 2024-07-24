@@ -9,21 +9,21 @@
 <body>
     <main class="container">
         <section>
-          <div class="formulario">
-            <form action="" id="form" method="post">
+            <div class="formulario">
+              <form action="" id="form" method="post">
               <h1 class="title_register">Registro</h1>
     
-              <input type="text" placeholder="Nombre" id="nombre" class="input">
+              <input type="text" placeholder="Nombre" id="nombre" class="input" autocomplete="off">
     
-              <input type="text" placeholder="Apellido" id="apellido" class="input">
+              <input type="text" placeholder="Apellido" id="apellido" class="input"  autocomplete="off">
 
-              <input type="text" placeholder="Telefono" id="telefono" class="input">
+              <input type="text" placeholder="Telefono" id="telefono" class="input"  autocomplete="off">
 
-              <input type="text" placeholder="Direccion" id="direccion" class="input">
+              <input type="text" placeholder="Direccion" id="direccion" class="input"  autocomplete="off">
     
-              <input type="text" placeholder="Documento"  id="documento" class="input">
+              <input type="text" placeholder="Documento"  id="documento" class="input" autocomplete="off">
 
-              <input type="text" placeholder="email" id="email" class="input">
+              <input type="text" placeholder="email" id="email" class="input" >
 
               <div class="terminos">
                 <input type="checkbox" id="check"/>
@@ -34,9 +34,27 @@
     
             </form>
           </div>
+          <div class="content_table">
+            
+            <table>
+              <thead>
+                  <tr>
+                      <th>Nombre</th>
+                      <th>Apellido</th>
+                      <th>Telefono</th>
+                      <th>Direccion</th>
+                      <th>Documento</th>
+                      <th>Email</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  
+              </tbody>
+          </table>
+          </div>
         </section>
       </main>
-    <script src="app.js"></script>
+    <script src="app2.js" type="module"></script>
 </body>
 </html>
 

@@ -111,31 +111,8 @@ const enviar = (event)=>{
           .catch(err => {
             console.log("error", err)
             alert("No se registro")
-          });
-    
+          }); 
   }
-
-
-  
 }
-
-// const form_enviar = (datos) =>{
-//   fetch('http://localhost:3000/users', {
-//       method: "POST",
-//       body: JSON.stringify(datos),
-//       headers: {"Content-type": "application/json;charset=UTF-8",}
-//     })
-//     .then(response => response.json()) 
-//     .then(json => alert("Registrado con exito", console.log(json)))
-//     .catch(err => {
-//       console.log("error", err)
-//       alert("No se registro")
-//     });
-// }
-
-
-
-
-
 formulario.addEventListener('submit', enviar)
 
