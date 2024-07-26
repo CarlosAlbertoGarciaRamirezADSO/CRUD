@@ -10,28 +10,28 @@
     <main class="container">
         <section>
             <div class="formulario">
-              <form action="" id="form" method="post">
+              <form action="" id="form" method="post" novalidate>
               <h1 class="title_register">Registro</h1>
     
-              <input type="text" placeholder="Nombre" id="nombre" class="input" autocomplete="off">
+              <input type="text" placeholder="Nombre" id="nombre" class="input" autocomplete="off" required>
     
-              <input type="text" placeholder="Apellido" id="apellido" class="input"  autocomplete="off">
+              <input type="text" placeholder="Apellido" id="apellido" class="input"  autocomplete="off" required>
 
-              <input type="text" placeholder="Telefono" id="telefono" class="input"  autocomplete="off">
+              <input type="text" placeholder="Telefono" id="telefono" class="input"  autocomplete="off" required>
 
-              <input type="text" placeholder="Direccion" id="direccion" class="input"  autocomplete="off">
+              <input type="text" placeholder="Direccion" id="direccion" class="input"  autocomplete="off" required>
     
-              <input type="text" placeholder="Documento"  id="documento" class="input" autocomplete="off">
+              <input type="text" placeholder="Documento"  id="documento" class="input" autocomplete="off" required>
 
-              <input type="text" placeholder="email" id="email" class="input" >
+              <input type="text" placeholder="email" id="email" class="input" required>
 
               <div class="terminos">
                 <input type="checkbox" id="check"/>
                 
                 <label for="">Terminos y Condiciónes</label>
               </div>
-              <input type="submit" id="enviar" disabled>
-    
+              <button type="submit" id="enviar" disabled class="boton">Enviar</button>
+              
             </form>
           </div>
           <div class="content_table">
@@ -45,6 +45,7 @@
                       <th>Direccion</th>
                       <th>Documento</th>
                       <th>Email</th>
+                      <th></th>
                   </tr>
               </thead>
               <tbody>

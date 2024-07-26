@@ -1,40 +1,13 @@
 {
   "users": [
     {
-      "id": "6571",
+      "id": "a947",
       "nombre": "carlos",
       "apellido": "garcia",
-      "telefono": "3004614592",
-      "direccion": "calle11A#1-08",
-      "documento": "1102354168",
+      "telefono": "13551351",
+      "direccion": "callle",
+      "documento": "231351",
       "email": "carlos23@gmail.com"
-    },
-    {
-      "id": "0a71",
-      "nombre": "carlos",
-      "apellido": "gacria",
-      "telefono": "43",
-      "direccion": "r32424",
-      "documento": "43232",
-      "email": "carlos876432"
-    },
-    {
-      "id": "da2b",
-      "nombre": "sfd",
-      "apellido": "sd",
-      "telefono": "243",
-      "direccion": "432",
-      "documento": "243",
-      "email": "carlos23@gmail.com252424"
-    },
-    {
-      "id": "dece",
-      "nombre": "wre",
-      "apellido": "rew",
-      "telefono": "243",
-      "direccion": "ewr",
-      "documento": "234",
-      "email": "carlos23@gmail.com635"
     }
   ],
   "documentos": [

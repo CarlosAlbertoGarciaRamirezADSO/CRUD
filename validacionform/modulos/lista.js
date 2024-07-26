@@ -30,12 +30,17 @@ export async function lista(){
       let columna_email = document.createElement("td")
       columna_email.textContent = x.email;
 
+      let boton = document.createElement("button")
+      boton.classList.add("boton--colores")
+      boton.textContent = "editar";
+
       filas.appendChild(columna_nombre)
       filas.appendChild(columna_apellido)
       filas.appendChild(columna_telefono)
       filas.appendChild(columna_direccion)
       filas.appendChild(columna_documento)
       filas.appendChild(columna_email)
+      filas.appendChild(boton)
       fragmento.appendChild(filas)
     });
     body_tabla.appendChild(fragmento)

@@ -1,4 +1,5 @@
 import { lista } from "./modulos/lista.js";
+import { required } from "./modulos/required.js";
 
 lista()
 let dom = document;
@@ -12,6 +13,19 @@ let email = dom.querySelector("#email")
 let enviar = dom.querySelector("#enviar")
 let checkbox = dom.querySelector("#check")
 let formulario = dom.querySelector("form")
+
+// let require = dom.querySelectorAll("[required]")
+
+// console.log("required",require);
+
+// let required =function hola() {   
+//     require.forEach(elemento =>{
+//         if (elemento.value === "") {
+//             elemento.classList.add("alert")
+            
+//         }
+//     })
+// }
 
 
 
@@ -36,60 +50,86 @@ let letras = (event,elemento) =>{
 
 let numeros = (event,elemento)=>{
     let numeros = /^[0-9]{0,12}$/
-    console.log(event.key);
-    console.log(event);
-    if (elemento.value == "") {
-        elemento.classList.add("alert")
-        elemento.classList.remove("good")
-    }
+
     if(numeros.test(event.key)){
-        console.log("si");
-        elemento.classList.remove("alert")
-        elemento.classList.add("good")
-        
-    }else{
-        event.preventDefault()
-        console.log("no")
-        elemento.classList.remove("good")
+            console.log("si");
+            elemento.classList.remove("alert")
+            elemento.classList.add("good")
+        }else if(elemento.value.length <10 ){
+            console.log("NOO");
+            elemento.classList.add("alert")
+            elemento.classList.remove("good")
+            event.preventDefault()
+            
+        }
+
+
+    if(elemento.value.length ===10){
         elemento.classList.add("alert")
+        elemento.classList.remove("good")
+        event.preventDefault()
     }
+    // console.log(event.key);
+    // console.log(event);
+    // if (elemento.value == "") {
+    //     elemento.classList.add("alert")
+    //     elemento.classList.remove("good")
+    // }
+    // if(numeros.test(event.key)){
+    //     console.log("si");
+    //     elemento.classList.remove("alert")
+    //     elemento.classList.add("good")
+    // }
+    // else{
+    //     event.preventDefault()
+    //     console.log("no")
+    //     elemento.classList.remove("good")
+    //     elemento.classList.add("alert")
+    // }
+
+    // if (!numeros.test(event.key) || elemento.value.lenght >= 12) {
+    //     event.preventDefault();
+    // }
+    // else {
+    // }
     
 }
+
+
+let validaciof = true
 
 let correo = (event,input)=>{
     // let correo = /^\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com\b$/
     let correo = /^[\w-._]+@[\w-._]+(\.[a-zA-Z]{2,4}){1,2}$/
     console.log(input.value);
     console.log(event);
-    if (input.value.trim() === "") {
-        console.log("correo obligatorio");
-        email.classList.add("alert")
-        email.classList.remove("good")
-    }else{
+    // if (input.value.trim() === "") {
+    //     console.log("correo obligatorio");
+    //     email.classList.add("alert")
+    //     email.classList.remove("good")
+    // }else{
         if(correo.test(input.value)){
             console.log("si");
             email.classList.remove("alert")
             email.classList.add("good")
+            validaciof = true
         }else{
             console.log("no")
             email.classList.remove("good")
             email.classList.add("alert")
-            
+            validaciof = false
             event.preventDefault() 
         }
 
     }
-}
-let dire = (event,input)=>{
-    let correo = /^[a-zA-Z0-9-#]/s
-    // let correo = /[A-Za-z0-9]+/g
+    let dire = (event,input)=>{
+    let correo = /[A-Za-z0-9]+/g
     console.log(input.value);
     console.log(event);
     if (input.value == "") {
         input.classList.add("alert")
         input.classList.remove("good")
-    }
-    if(correo.test(event.key)){
+    }else if(correo.test(event.key)){
         console.log("si");
         input.classList.remove("alert")
         input.classList.add("good")
@@ -102,6 +142,7 @@ let dire = (event,input)=>{
         input.classList.add("alert")
     }
 }
+
 let checkear = ()=>{
     if (checkbox.checked) {
         enviar.removeAttribute("disabled")
@@ -110,34 +151,37 @@ let checkear = ()=>{
     }
 }
 
-let agregar = (event)=>{
+checkbox.addEventListener("click",checkear)
 
+let agregar = (event)=>{
+    
     let num = 0;
     
-    if (nombre.value.trim() == "") {
+    if (nombre.value.trim() == "" || validaciof === false) {
         nombre.classList.add("alert")
         num = 1
     }
-    if (apellido.value.trim() == "") {
+    if (apellido.value.trim() == "" || validaciof === false) {
         apellido.classList.add("alert")
         num = 1
     }
-    if (telefono.value.trim() == "") {
+    if (telefono.value.trim() == "" || validaciof === false) {
         telefono.classList.add("alert")
         num = 1
     }
-    if (direccion.value.trim() == "") {
+    if (direccion.value.trim() == "" || validaciof === false) {
         direccion.classList.add("alert")
         num = 1
     }
-    if (documento.value.trim() == "") {
+    if (documento.value.trim() == "" || validaciof === false) {
         documento.classList.add("alert")
         num = 1
     }
-    if (email.value.trim() == "") {
+    if (email.value.trim() == "" )  {
         email.classList.add("alert")
         num = 1
     }
+    
     if (num === 0) {
         const data = {
             nombre: nombre.value,
@@ -151,20 +195,23 @@ let agregar = (event)=>{
             method: "POST",
             body: JSON.stringify(data),
             headers: {"Content-type": "application/json;charset=UTF-8",}
-          })
-          .then(response => response.json()) 
-          .then(json => alert("Registrado con exito", console.log(json)))
-          .catch(err => {
+        })
+        .then(response => response.json()) 
+        .then(json => alert("Registrado con exito", console.log(json)))
+        .catch(err => {
             console.log("error", err)
             alert("No se registro")
-          }); 
+        }); 
     }
 }
 
 formulario.addEventListener('submit', agregar)
 
+enviar.addEventListener("click",(event)=>{
+    required(event)
+})
 
-checkbox.addEventListener("click",checkear)
+
 
 nombre.addEventListener("keypress",(event)=>{
     letras(event,nombre)
@@ -182,12 +229,15 @@ apellido.addEventListener("blur",(event)=>{
 })
 
 
+
 telefono.addEventListener("keypress",(event)=>{
     numeros(event,telefono)
 })
 telefono.addEventListener("blur",(event)=>{
     letras(event,telefono)
 })
+
+
 
 
 documento.addEventListener("keypress",(event)=>{
