@@ -1,13 +1,14 @@
 let dom = document;
-let require = dom.querySelectorAll("[required]")
-
-console.log("required",require);
-
-export let required =function hola() {   
-    require.forEach(elemento =>{
+const validar = (event, form) => {  
+    event.preventDefault();
+    let elementos = dom.querySelectorAll(form)
+    let bandera = true; 
+    elementos.forEach(elemento =>{
         if (elemento.value === "") {
             elemento.classList.add("alert")
-            
+            bandera = false;
         }
     })
+    return bandera   
 }
+export default validar

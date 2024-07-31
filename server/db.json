@@ -1,16 +1,16 @@
 {
   "users": [
     {
-      "id": "a947",
-      "nombre": "carlos",
-      "apellido": "garcia",
-      "telefono": "13551351",
-      "direccion": "callle",
-      "documento": "231351",
-      "email": "carlos23@gmail.com"
+      "id": "0631",
+      "nombre": "João",
+      "apellido": "Souza Silva",
+      "telefono": "3121286800",
+      "direccion": "Av. dos Andradas, 3000",
+      "documento": "43242",
+      "email": "teste@exemplo.us"
     }
   ],
-  "documentos": [
+  "documents": [
     {
       "id": "1",
       "nombre": "Tipo Documento"
@@ -32,8 +32,8 @@
       "nombre": "Extrangeria"
     },
     {
-      "id": "6",
-      "nombre": "otro"
+      "id": "59c1",
+      "nombre": "carlos"
     }
   ]
 }

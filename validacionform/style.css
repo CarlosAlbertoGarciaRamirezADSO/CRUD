@@ -73,14 +73,14 @@
     font-size: 18px;
 
   }
-  .options{
+  /* .options{
     outline: none;
     width: 100%;
     padding: 20px;
     margin-bottom: 10px;
     border-radius: 8px;
     border: solid 1px rgb(39, 172, 255);
-  }
+  } */
   
   .alert{
     width: 100%;

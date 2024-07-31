@@ -1,8 +1,8 @@
 import { lista } from "./modulos/lista.js";
-import { required } from "./modulos/required.js";
+import  required  from "./modulos/required.js";
 
 lista()
-let dom = document;
+const dom = document;
 
 let nombre = dom.querySelector("#nombre")
 let apellido = dom.querySelector("#apellido")
@@ -12,26 +12,12 @@ let documento = dom.querySelector("#documento")
 let email = dom.querySelector("#email")
 let enviar = dom.querySelector("#enviar")
 let checkbox = dom.querySelector("#check")
-let formulario = dom.querySelector("form")
-
-// let require = dom.querySelectorAll("[required]")
-
-// console.log("required",require);
-
-// let required =function hola() {   
-//     require.forEach(elemento =>{
-//         if (elemento.value === "") {
-//             elemento.classList.add("alert")
-            
-//         }
-//     })
-// }
-
+let formulario = dom.querySelector("#form")
 
 
 let letras = (event,elemento) =>{
     let letras = /^[a-zA-Z]$/
-    console.log(event.key);
+    // console.log(event.key);
     if (elemento.value == "") {
         elemento.classList.add("alert")
         elemento.classList.remove("good")
@@ -96,28 +82,21 @@ let numeros = (event,elemento)=>{
 }
 
 
-let validaciof = true
 
 let correo = (event,input)=>{
     // let correo = /^\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com\b$/
     let correo = /^[\w-._]+@[\w-._]+(\.[a-zA-Z]{2,4}){1,2}$/
     console.log(input.value);
     console.log(event);
-    // if (input.value.trim() === "") {
-    //     console.log("correo obligatorio");
-    //     email.classList.add("alert")
-    //     email.classList.remove("good")
-    // }else{
         if(correo.test(input.value)){
             console.log("si");
             email.classList.remove("alert")
             email.classList.add("good")
-            validaciof = true
         }else{
             console.log("no")
             email.classList.remove("good")
             email.classList.add("alert")
-            validaciof = false
+
             event.preventDefault() 
         }
 
@@ -153,65 +132,33 @@ let checkear = ()=>{
 
 checkbox.addEventListener("click",checkear)
 
-let agregar = (event)=>{
-    
-    let num = 0;
-    
-    if (nombre.value.trim() == "" || validaciof === false) {
-        nombre.classList.add("alert")
-        num = 1
-    }
-    if (apellido.value.trim() == "" || validaciof === false) {
-        apellido.classList.add("alert")
-        num = 1
-    }
-    if (telefono.value.trim() == "" || validaciof === false) {
-        telefono.classList.add("alert")
-        num = 1
-    }
-    if (direccion.value.trim() == "" || validaciof === false) {
-        direccion.classList.add("alert")
-        num = 1
-    }
-    if (documento.value.trim() == "" || validaciof === false) {
-        documento.classList.add("alert")
-        num = 1
-    }
-    if (email.value.trim() == "" )  {
-        email.classList.add("alert")
-        num = 1
-    }
-    
-    if (num === 0) {
-        const data = {
-            nombre: nombre.value,
-            apellido: apellido.value,
-            telefono: telefono.value,
-            direccion: direccion.value,
-            documento: documento.value,
-            email:email.value
-        }
-        fetch('http://localhost:3000/users', {
-            method: "POST",
+formulario.addEventListener("submit",(event)=>{
+    let respuesta = required(event, "form [required]")
+
+    const data = {
+                nombre: nombre.value,
+                apellido: apellido.value,
+                telefono: telefono.value,
+                direccion: direccion.value,
+                documento: documento.value,
+                email: email.value
+            }
+            console.log(data);
+
+            if(respuesta){
+                fetch('http://localhost:3000/users', {
+            method: 'POST',
             body: JSON.stringify(data),
-            headers: {"Content-type": "application/json;charset=UTF-8",}
-        })
-        .then(response => response.json()) 
-        .then(json => alert("Registrado con exito", console.log(json)))
-        .catch(err => {
-            console.log("error", err)
-            alert("No se registro")
-        }); 
-    }
-}
-
-formulario.addEventListener('submit', agregar)
-
-enviar.addEventListener("click",(event)=>{
-    required(event)
+            headers: {
+              'Content-type': 'application/json; charset=UTF-8',
+            },
+          })
+            .then((respuesta) => respuesta.json())
+            .then((json) => {
+                nombre.value = ''
+            });
+    }          
 })
-
-
 
 nombre.addEventListener("keypress",(event)=>{
     letras(event,nombre)
@@ -262,8 +209,4 @@ email.addEventListener("blur",(event)=>{
     letras(event,email)
 })
 
-let envia = (event)=>{
-    event.preventDefault()
-}
-form.addEventListener("submit",envia)
 
