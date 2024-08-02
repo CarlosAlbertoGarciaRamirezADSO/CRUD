@@ -1,7 +1,8 @@
 import { lista } from "./modulos/lista.js";
 import  required  from "./modulos/required.js";
+import option from "./modulos/solicitud.js";
 
-lista()
+// lista()
 const dom = document;
 
 let nombre = dom.querySelector("#nombre")
@@ -13,6 +14,61 @@ let email = dom.querySelector("#email")
 let enviar = dom.querySelector("#enviar")
 let checkbox = dom.querySelector("#check")
 let formulario = dom.querySelector("#form")
+let select = dom.querySelector("#tipo_documento")
+
+let body_tabla = dom.querySelector("tbody")
+const fragmento = document.createDocumentFragment();
+
+option().then(data =>{
+    data.forEach(element => {
+        let option = document.createElement("option")
+        option.textContent = element.nombre
+        let id = element.id
+        option.setAttribute("value",id)
+        select.classList.add("input")
+        select.appendChild(option)
+    });
+})
+
+
+lista().then(datos =>{
+    datos.forEach( x => {
+        let filas = document.createElement("tr")
+
+        let columna_nombre = document.createElement("td")
+        columna_nombre.textContent = x.nombre;
+
+        let columna_apellido = document.createElement("td")
+        columna_apellido.textContent = x.apellido;
+
+        let columna_telefono = document.createElement("td")
+        columna_telefono.textContent = x.telefono;
+
+        let columna_direccion = document.createElement("td")
+        columna_direccion.textContent = x.direccion;
+
+        let columna_documento = document.createElement("td")
+        columna_documento.textContent = x.documento;
+
+        let columna_email = document.createElement("td")
+        columna_email.textContent = x.email;
+
+        let boton = document.createElement("button")
+        boton.classList.add("boton--colores")
+        boton.textContent = "editar";
+
+        filas.appendChild(columna_nombre)
+        filas.appendChild(columna_apellido)
+        filas.appendChild(columna_telefono)
+        filas.appendChild(columna_direccion)
+        filas.appendChild(columna_documento)
+        filas.appendChild(columna_email)
+        filas.appendChild(boton)
+        fragmento.appendChild(filas)
+    });
+    body_tabla.appendChild(fragmento)
+})
+
 
 
 let letras = (event,elemento) =>{
@@ -150,9 +206,9 @@ formulario.addEventListener("submit",(event)=>{
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
-              'Content-type': 'application/json; charset=UTF-8',
-            },
-          })
+                'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
             .then((respuesta) => respuesta.json())
             .then((json) => {
                 nombre.value = ''

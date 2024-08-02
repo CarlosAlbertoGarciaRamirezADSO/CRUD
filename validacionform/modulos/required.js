@@ -4,7 +4,7 @@ const validar = (event, form) => {
     let elementos = dom.querySelectorAll(form)
     let bandera = true; 
     elementos.forEach(elemento =>{
-        if (elemento.value === "") {
+        if (elemento.value === "" ) {
             elemento.classList.add("alert")
             bandera = false;
         }
