@@ -1,8 +1,9 @@
+import solicitud from "./modulos/ajax.js";
 import { lista } from "./modulos/lista.js";
 import  required  from "./modulos/required.js";
 import option from "./modulos/solicitud.js";
+// import solicitud from "./modulos/ajax.js";   
 
-// lista()
 const dom = document;
 
 let nombre = dom.querySelector("#nombre")
@@ -19,16 +20,17 @@ let select = dom.querySelector("#tipo_documento")
 let body_tabla = dom.querySelector("tbody")
 const fragmento = document.createDocumentFragment();
 
-option().then(data =>{
-    data.forEach(element => {
-        let option = document.createElement("option")
-        option.textContent = element.nombre
-        let id = element.id
-        option.setAttribute("value",id)
-        select.classList.add("input")
-        select.appendChild(option)
-    });
-})
+option("documents")
+    .then(data =>{
+        data.forEach(element => {
+            let option = document.createElement("option")
+            option.textContent = element.nombre
+            let id = element.id
+            option.setAttribute("value",id)
+            select.classList.add("input")
+            select.appendChild(option)
+        });
+    })
 
 
 lista().then(datos =>{
@@ -56,6 +58,10 @@ lista().then(datos =>{
         let boton = document.createElement("button")
         boton.classList.add("boton--colores")
         boton.textContent = "editar";
+        boton.addEventListener("click",(event)=>{
+            
+            
+        })
 
         filas.appendChild(columna_nombre)
         filas.appendChild(columna_apellido)
@@ -73,7 +79,6 @@ lista().then(datos =>{
 
 let letras = (event,elemento) =>{
     let letras = /^[a-zA-Z]$/
-    // console.log(event.key);
     if (elemento.value == "") {
         elemento.classList.add("alert")
         elemento.classList.remove("good")
@@ -84,9 +89,7 @@ let letras = (event,elemento) =>{
         elemento.classList.add("good")
     }else{
         event.preventDefault()
-        // elemento.classList.add("alert")
-        // elemento.classList.remove("good")
-        // console.log("no")
+
     }
 }
 
@@ -111,30 +114,7 @@ let numeros = (event,elemento)=>{
         elemento.classList.remove("good")
         event.preventDefault()
     }
-    // console.log(event.key);
-    // console.log(event);
-    // if (elemento.value == "") {
-    //     elemento.classList.add("alert")
-    //     elemento.classList.remove("good")
-    // }
-    // if(numeros.test(event.key)){
-    //     console.log("si");
-    //     elemento.classList.remove("alert")
-    //     elemento.classList.add("good")
-    // }
-    // else{
-    //     event.preventDefault()
-    //     console.log("no")
-    //     elemento.classList.remove("good")
-    //     elemento.classList.add("alert")
-    // }
 
-    // if (!numeros.test(event.key) || elemento.value.lenght >= 12) {
-    //     event.preventDefault();
-    // }
-    // else {
-    // }
-    
 }
 
 
@@ -189,8 +169,6 @@ let checkear = ()=>{
 checkbox.addEventListener("click",checkear)
 
 formulario.addEventListener("submit",(event)=>{
-    let respuesta = required(event, "form [required]")
-
     const data = {
                 nombre: nombre.value,
                 apellido: apellido.value,
@@ -199,6 +177,8 @@ formulario.addEventListener("submit",(event)=>{
                 documento: documento.value,
                 email: email.value
             }
+    let respuesta = required(event, "form [required]")
+
             console.log(data);
 
             if(respuesta){
@@ -210,9 +190,7 @@ formulario.addEventListener("submit",(event)=>{
                 },
             })
             .then((respuesta) => respuesta.json())
-            .then((json) => {
-                nombre.value = ''
-            });
+            .then((json) => {});
     }          
 })
 
