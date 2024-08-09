@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
   </head>
   <body>
     <main class="container">
@@ -27,6 +28,8 @@
                 
                 <input type="text" placeholder="email" id="email" class="input" required>
 
+                <input type="text" hidden id="oculto">
+
                 <div class="terminos">
                   <input type="checkbox" id="check"/>                  
                   <label for="check">Terminos y Condiciónes</label>
@@ -35,8 +38,7 @@
                 
               </form>
           </div>
-          <div class="content_table">
-            
+          <!-- <div class="content_table"> -->
             <table>
               <thead>
                 <tr>
@@ -53,7 +55,26 @@
                 
               </tbody>
           </table>
-        </div>
+        <!-- </div> -->
+
+        <template id="user">
+          <tr>
+            <td class="first_name"></td>
+            <td class="last_name"></td>
+            <td class="phone"></td>
+            <td class="addres"></td>
+            <!-- <td class="type_id"></td> -->
+            <td class="document"></td>
+            <td class="email"></td>
+              <td>
+                <div class="group">
+                  <button class="edit button">editar</button>
+                  <button class="delete button">eliminar</button>
+                </div>
+              </td>
+          </tr>
+        </template>
+
         </section>
       </main>
       <script src="app2.js" type="module"></script>
